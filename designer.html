@@ -1,0 +1,472 @@
+<html>
+	<style>
+		td {
+			background-color: #d1d5da;
+			width: 10px;
+			height: 10px;
+		}
+	</style>
+	<script>
+		function toggleBackgroundColor(previousColor, element) {
+			if (previousColor == "rgb(40, 167, 69)") element.style.backgroundColor = "rgb(209, 213, 218)"
+			else element.style.backgroundColor = "rgb(40, 167, 69)" // Make it green	
+		}
+		
+		function clicked(event) {
+			toggleBackgroundColor(event.path[0].style.backgroundColor , event.path[0])
+		}
+		
+		function binder() {
+			const tableDatas = Array.from(document.getElementsByTagName('td'))
+			tableDatas.forEach((td) => {
+				console.log(`binded -- ${td}`)
+				td.addEventListener("click", clicked);
+			})
+		}
+		
+		function extractBitmap() {
+			const tableDatas = document.getElementsByTagName('td');
+			const bitmap = [];
+			Array.from(tableDatas).forEach(item => {
+				if (item.style.backgroundColor == 'rgb(40, 167, 69)') bitmap.push(1)
+				else bitmap.push(0)
+			})
+			console.log(JSON.stringify(bitmap))
+			return bitmap
+		}
+		
+		const chunk = (arr, n) => arr.length ? [arr.slice(0, n), ...chunk(arr.slice(n), n)] : []
+		
+		function extractBitmapInDate(){ 
+			// Starting date being "2015-12-27"
+			let bitmap = extractBitmap()
+			let bitmapSpliced = chunk(bitmap , 53);
+			
+			let i = 0; 
+			let j = 0;
+			let currentDate = Date.parse("2015-12-27")
+			let commitableDates = []
+
+			for (j = 0; j < 53; j++ ) {
+				for ( i = 0; i < 7; i++ ) {
+					if (bitmapSpliced[i][j] == 1) commitableDates.push(new Date(currentDate))
+					currentDate += ( 24 * 60 * 60 * 1000 )
+				}
+			}
+
+			console.log(JSON.stringify(commitableDates))
+			return commitableDates
+		}
+		
+		function loadBitmap(array) {
+			let i = 0;
+			const tableData = document.getElementsByTagName('td');
+			
+			if (array.length != tableData.length) {
+				console.error('Array length and table data length doesn\'t match');
+				return -1;
+			}
+			
+			for (i = 0; i < array.length; i++) {
+				if (array[i] == 1) tableData[i].style.backgroundColor = "rgb(40, 167, 69)"
+				else tableData[i].style.backgroundColor = "rgb(209, 213, 218)"
+			}
+		}
+	</script>	
+	<body onload="binder()">
+		<table border=0 style="padding: 3%" >
+		<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	<tr> 
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</table>
+	</body>
+</html>
